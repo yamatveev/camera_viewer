@@ -35,7 +35,7 @@ logger = logging.getLogger(APP_NAME)
 class CameraWidget(QtWidgets.QMainWindow):
 
     REFRESH_TANGO_SETTINGS_PERIOD = 5000 # how often we update settings with Tango
-    REFRESH_ICONS_PERIOD = 500 # how often we update settings with Tango
+    REFRESH_ICONS_PERIOD = 1500 # how often we update settings with Tango
 
     # ----------------------------------------------------------------------
     def __init__(self, parent, dock, camera):

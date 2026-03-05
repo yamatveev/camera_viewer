@@ -170,19 +170,19 @@ class SettingsWidget(BaseWidget):
 
             for ui in ['view_x', 'view_y']:
                 if not getattr(self._ui, 'sb_{}'.format(ui)).hasFocus():
-                    getattr(self._ui, 'sb_{}'.format(ui)).setMaximum(1e6)
+                    getattr(self._ui, 'sb_{}'.format(ui)).setMaximum(int(1e6))
                     getattr(self._ui, 'sb_{}'.format(ui)).setValue(getattr(self._settings_reader, ui))
 
             for ui in ['view_w', 'view_h']:
                 if not getattr(self._ui, 'sb_{}'.format(ui)).hasFocus():
-                    getattr(self._ui, 'sb_{}'.format(ui)).setMaximum(1e6)
+                    getattr(self._ui, 'sb_{}'.format(ui)).setMaximum(int(1e6))
                     getattr(self._ui, 'sb_{}'.format(ui)).setValue(getattr(self._settings_reader, ui))
 
             self._update_picture_size_limits()
 
             if not self._ui.sb_FPS.hasFocus():
-                self._ui.sb_FPS.setMaximum(self._settings_reader.fps_max)
-                self._ui.sb_FPS.setValue(self._settings_reader.fps)
+                self._ui.sb_FPS.setMaximum(int(self._settings_reader.fps_max))
+                self._ui.sb_FPS.setValue(int(self._settings_reader.fps))
 
             if not self._ui.chk_background.hasFocus():
                 self._ui.chk_background.setChecked(self._settings_reader.background)
@@ -334,10 +334,10 @@ class SettingsWidget(BaseWidget):
             self._ui.sb_view_h.setValue(view_h)
             self._ui.sb_view_h.blockSignals(False)
 
-        self._ui.sb_view_x.setMaximum(max_w - view_w)
-        self._ui.sb_view_y.setMaximum(max_h - view_h)
-        self._ui.sb_view_w.setMaximum(max_w - view_x)
-        self._ui.sb_view_h.setMaximum(max_h - view_y)
+        self._ui.sb_view_x.setMaximum(int(max_w - view_w))
+        self._ui.sb_view_y.setMaximum(int(max_h - view_h))
+        self._ui.sb_view_w.setMaximum(int(max_w - view_x))
+        self._ui.sb_view_h.setMaximum(int(max_h - view_y))
 
         return view_x, view_y, view_w, view_h
 
@@ -415,7 +415,8 @@ class SettingsWidget(BaseWidget):
 
         finally:
             self._block_signals(False)
-            return result
+
+        return result
 
     # ----------------------------------------------------------------------
     def load_ui_settings(self, camera_name):

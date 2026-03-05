@@ -99,7 +99,7 @@ class PeakMarker(pg.GraphicsObject):
         p.setPen(pg.mkPen('r', width=2))
 
         for x, y in self._positions:
-            p.drawEllipse(QtCore.QPoint(x, y), self._size, self._size)
+            p.drawEllipse(QtCore.QPoint(int(x), int(y)), self._size, self._size)
 
         p.end()
 
@@ -186,9 +186,14 @@ class LineSegmentItem(pg.GraphicsObject):
                 p1 = rotate(center, point, 1.57)
                 p2 = rotate(center, point, -1.57)
 
-                self._line2_end1 = QtCore.QPoint(p1[0], p1[1])
-                self._line2_end2 = QtCore.QPoint(p2[0], p2[1])
+                self._line2_end1 = QtCore.QPoint(int(p1[0]), int(p1[1]))
+                self._line2_end2 = QtCore.QPoint(int(p2[0]), int(p2[1]))
 
+        self.generate_picture()
+
+    # ----------------------------------------------------------------------
+    def new_circle_size(self, new_size):
+        self._scaled_circle_size = self._scaled_circle_size * new_size / self._circle_size
         self.generate_picture()
 
     # ----------------------------------------------------------------------
