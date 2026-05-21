@@ -76,6 +76,7 @@ class Ui_SettingsWidget(object):
         self.sb_exposure.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.sb_exposure.setDecimals(6)
         self.sb_exposure.setMinimum(1e-06)
+        self.sb_exposure.setMaximum(99999.99)
         self.sb_exposure.setProperty("value", 1.0)
         self.sb_exposure.setObjectName("sb_exposure")
         self.horizontalLayout_6.addWidget(self.sb_exposure)
